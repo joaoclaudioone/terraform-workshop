@@ -5,4 +5,4 @@ qtd_instances = 1
 project_name = "Terraform-Workshop"
 
 remote_bucket = "m4u-terraform-workshop"
-sg_remote_state_s3_key = "states/2_1_remote_state.tfstate"
+sg_remote_state_s3_key = "states/2.1-remotestate.tfstate"

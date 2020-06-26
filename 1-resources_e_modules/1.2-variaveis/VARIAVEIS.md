@@ -38,5 +38,3 @@ output "private_ip" {
   description = "Ip privado da instância"
 }
 ```
-
-### Uso

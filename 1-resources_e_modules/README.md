@@ -5,11 +5,11 @@ O principal propósito da linguagem do Terraform é a declaração de Resources.
 A sintaxe consiste em apenas alguns elementos básicos:
 ```
 resource "aws_vpc" "main" {
-cidr_block = var.base_cidr_block
+    cidr_block = var.base_cidr_block
 }
 <BLOCK TYPE> "<BLOCK LABEL>" "<BLOCK LABEL>" {
-# Block body
-<IDENTIFIER> = <EXPRESSION> # Argument
+    # Block body
+    <IDENTIFIER> = <EXPRESSION> # Argument
 }
 ```
 * Block Type é o tipo de estrutura da linguagem que está sendo declarada. Os tipos resources, modules e provider são alguns exemplos.
