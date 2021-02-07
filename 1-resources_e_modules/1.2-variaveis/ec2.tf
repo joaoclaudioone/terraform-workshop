@@ -24,10 +24,9 @@ resource "aws_key_pair" "key_workshop" {
 resource "aws_security_group" "permite_ssh" {
   name        = "permite_ssh"
   vpc_id      = var.vpc
-  description = "Permite acesso na porta 22 e libera toda o trafego de saida"
 
   ingress {
-    description = "TLS from VPC"
+    description = "Acesso a porta 22"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
