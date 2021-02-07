@@ -16,7 +16,5 @@ version = versão do framework do terraform, se não for definda será feito o d
 
 region = região da aws que será usada
 
-Lista de providers:
-* https://www.terraform.io/docs/providers/index.html
 
  
