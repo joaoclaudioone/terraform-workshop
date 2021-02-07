@@ -32,3 +32,6 @@ override.tf.json
 # Ignore keys directory
 # 
 keys
+
+# ignore hcl files
+*.hcl
