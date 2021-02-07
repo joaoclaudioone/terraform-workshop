@@ -10,9 +10,9 @@ O terraform suporta três tipos de variáveis string, number e bool. E estrutura
  
 ```
 variable "ami_id" {
+   description = "Amazon Linux 2 da região us-east-1"
    type = string
    default = "ami-09d95fab7fff3776c"
-   description = "Amazon Linux 2 da região us-east-1"
 }
 ```
  
@@ -34,7 +34,7 @@ São valores de retorno do apply do terraform. Estes valores tem diversos usos.
 
 ```
 output "private_ip" {
-  value = aws_instance.ec2_instance.private_ip
   description = "Ip privado da instância"
+  value = aws_instance.ec2_instance.private_ip
 }
 ```
