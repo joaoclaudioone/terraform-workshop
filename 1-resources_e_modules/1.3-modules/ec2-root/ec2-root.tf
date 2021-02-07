@@ -1,13 +1,14 @@
 provider "aws" {
-    region = var.region
-    version = "~> 2.0"
+    region  = var.region
+    profile = var.profile
 }
 
 module "ec2" {
     source = "../ec2-module"
 
     qtd_instances = var.qtd_instances
-    region = var.region
+    project       = var.project
     instance_type = var.instance_type
-    subnets = var.subnets
+    tags          = var.tags
+    ingress_list  = var.ingress_list
 }

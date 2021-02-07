@@ -1,29 +1,55 @@
-/*
-Variaveis
-*/
-variable "region"{
-  type = string
-  description = "Região em que os recursos serão criados"
+variable "tags" {
+  description = "tags para os recursos"
+  default = {
+    terraform      = "true"
+    repositorio    = "git@github.com:joaoclaudioone/terraform-workshop.git"
+  }
 }
 
-variable "ami_id" {
-    type = string
-    default = "ami-09d95fab7fff3776c"
-    description = "Amazon Linux 2 da região us-east-1"
+variable "project" {
+    description = "nome do projeto"
+    type        = string
+    default     = "Workshop"
 }
 
 variable "instance_type" {
-    type = string
     description = "Tipo da instância que será criada"
-}
-
-variable "subnets" {
-    type = list(string)
-    description = "Subnet aonde o recurso será criado"
+    type        = string
+    default     = "t3.micro"
 }
 
 variable "qtd_instances" {
-    type = number
-    default = 1
     description = "Quantidade de instâncias que serão criadas"
+    type = number
+    default = 3
+}
+
+variable "region" {
+    description = "Região em que os recursos serão criados"
+    type        = string
+    default     = "us-east-1"
+}
+
+variable "profile" { 
+    description = "Perfil do arquivo ~/.aws/credencials"
+    type        = string
+    default     = "personal"
+}
+
+variable "ingress_list" {
+    description = "Lista com as regras de entrada para o security group"
+    default = [
+        {
+            from_port = 22
+            to_port   = 22
+            protocol  = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+        },
+        {
+            from_port = 8080
+            to_port   = 8080
+            protocol  = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+        }
+    ]
 }
