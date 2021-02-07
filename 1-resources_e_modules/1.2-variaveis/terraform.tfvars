@@ -1,3 +1,3 @@
-region = "us-east-1"
-instance_type = "t3.micro"
-subnet = "subnet-02a471d0f42ce1646"
+# instance_type = "t3.small"
+subnet = "subnet-0fd7fed5990c2082d"
+vpc = "vpc-09647371094e95109"

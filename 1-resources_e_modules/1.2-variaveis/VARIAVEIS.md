@@ -1,5 +1,5 @@
 # Variáveis
-Servem para parametrizar o nosso código, deixando ele pronto para ser usado de maneiras diferentes. Os valores das variáveis podem ser assinalados via bloco de comando, linha de comando, módulo e arquivo de configuração.
+Servem para parametrizar o nosso código, deixando mais facilmente parametrizável. Os valores das variáveis podem ser assinalados via bloco de comando, linha de comando, módulo e arquivo de configuração.
  
 Existem dois tipos de variáveis de input e output.
  

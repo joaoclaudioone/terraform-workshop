@@ -1,50 +1,47 @@
-/*
-Variaveis
-*/
-variable "region"{
-  type = string
-  description = "Região em que os recursos serão criados"
-}
-
-variable "ami_id" {
-   type = string
-   default = "ami-09d95fab7fff3776c"
-   description = "Amazon Linux 2 da região us-east-1"
-}
-
-variable "instance_type" {
-  type = string
-  description = "Tipo da instância que será criada"
-}
-
-variable "subnet" {
-  type = string
-  description = "Subnet aonde o recurso será criado"
-}
-
-/*
-Recursos
-*/
 provider "aws" {
-    region = var.region
+    region  = var.region
+    profile = var.profile
 }
-
 
 resource "aws_instance" "ec2_instance" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  subnet_id     = var.subnet
+  ami                         = var.ami_id
+  instance_type               = var.instance_type
+  subnet_id                   = var.subnet
+  associate_public_ip_address = var.public_ip
+  vpc_security_group_ids      = [aws_security_group.permite_ssh.id]
+  key_name                    = aws_key_pair.key_workshop.id
+
+  tags = merge(var.tags, {
+    Name        = var.project
+  },)
 }
 
-/*
-Outputs
-*/
-output "private_dns" {
-  value       = aws_instance.ec2_instance.private_dns
-  description = "Endereço privado da instância"
+resource "aws_key_pair" "key_workshop" {
+    key_name   = var.project
+    public_key = file(var.public_key)
 }
 
-output "private_ip" {
-  value       = aws_instance.ec2_instance.private_ip
-  description = "Ip privado da instância"
+resource "aws_security_group" "permite_ssh" {
+  name        = "permite_ssh"
+  vpc_id      = var.vpc
+  description = "Permite acesso na porta 22 e libera toda o trafego de saida"
+
+  ingress {
+    description = "TLS from VPC"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  
+  tags = merge(var.tags, {
+    Name        = var.project
+  },)
 }
