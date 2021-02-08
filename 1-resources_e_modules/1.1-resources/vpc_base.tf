@@ -3,7 +3,6 @@ provider "aws" {
   profile = "personal"
 }
 
-
 resource "aws_vpc" "vpc_base" {
   cidr_block = "10.0.0.0/16"
   enable_dns_hostnames = true
@@ -39,7 +38,7 @@ resource "aws_route_table" "rt_public" {
 }
 
 resource "aws_subnet" "subnet_base" {
-  vpc_id     = aws_vpc.vpc_base.id # essa referência será explicada mais a frente 
+  vpc_id     = aws_vpc.vpc_base.id
   cidr_block = "10.0.1.0/24"
 
   tags = {
