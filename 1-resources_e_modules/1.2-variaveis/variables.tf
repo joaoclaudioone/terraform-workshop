@@ -21,12 +21,6 @@ variable "region" {
     default     = "us-east-1"
 }
 
-variable "profile" { 
-    description = "Perfil do arquivo ~/.aws/credencials"
-    type        = string
-    default     = "personal"
-}
-
 variable "ami_id" {
     description = "Amazon Linux 2 da região us-east-1"
     type        = string

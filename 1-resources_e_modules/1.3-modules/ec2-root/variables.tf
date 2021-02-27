@@ -30,12 +30,6 @@ variable "region" {
     default     = "us-east-1"
 }
 
-variable "profile" { 
-    description = "Perfil do arquivo ~/.aws/credencials"
-    type        = string
-    default     = "personal"
-}
-
 variable "ingress_list" {
     description = "Lista com as regras de entrada para o security group"
     default = [
