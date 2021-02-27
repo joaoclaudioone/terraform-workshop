@@ -26,5 +26,10 @@ provider "aws" {
 version = versão do framework do terraform, se não for definda será feito o download da ultima versão.
 region = região da aws que será usada
 
+### Infraestrutura
+Neste exemplo vamos criar uma vpc com uma subnet pública com um internet gateway. Em outros passos vamos usar essa VPC para criar instâncias totalmente acessíveis pela internet. 
+
+![plot](../../tools/img/vpc_base.jpg)
+
 
  
