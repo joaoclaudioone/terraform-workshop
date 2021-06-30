@@ -1,8 +1,3 @@
-variable "tags" {
-  description = "Tags para os recursos "
-  type        = map(string)
-}
-
 variable "project" {
     description = "Nome do projeto"
     type        = string

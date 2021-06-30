@@ -1,3 +1,5 @@
+# Exemplo de configuração do backend
+/*
 terraform {
     backend "s3" {
         region = "us-east-1"
@@ -5,3 +7,4 @@ terraform {
         key = "states/workshop/2.1-remotestate.tfstate"
     }
 }
+*/

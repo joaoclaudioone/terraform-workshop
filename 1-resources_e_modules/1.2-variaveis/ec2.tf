@@ -1,5 +1,11 @@
 provider "aws" {
     region  = var.region
+
+    default_tags {
+      tags = merge(var.tags, {
+        Name        = var.project
+      },)
+    }
 }
 
 resource "aws_instance" "ec2_instance" {
@@ -10,9 +16,6 @@ resource "aws_instance" "ec2_instance" {
   vpc_security_group_ids      = [aws_security_group.permite_ssh.id]
   key_name                    = aws_key_pair.key_workshop.id
 
-  tags = merge(var.tags, {
-    Name        = var.project
-  },)
 }
 
 resource "aws_key_pair" "key_workshop" {
@@ -38,8 +41,4 @@ resource "aws_security_group" "permite_ssh" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  
-  tags = merge(var.tags, {
-    Name        = var.project
-  },)
 }

@@ -1,5 +1,8 @@
 provider "aws" {
     region  = var.region
+    default_tags {
+      tags = var.tags
+    }
 }
 
 module "ec2" {
@@ -8,6 +11,5 @@ module "ec2" {
     qtd_instances = var.qtd_instances
     project       = var.project
     instance_type = var.instance_type
-    tags          = var.tags
     ingress_list  = var.ingress_list
 }

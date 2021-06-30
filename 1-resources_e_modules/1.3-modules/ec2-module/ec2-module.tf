@@ -1,5 +1,6 @@
 resource "aws_instance" "ec2_instance" {
   count                       = var.qtd_instances
+
   ami                         = data.aws_ami.latest_ami.id
   instance_type               = var.instance_type
   subnet_id                   = element(tolist(data.aws_subnet_ids.subnet_id.ids), count.index) # previne que caso o número de instancias seja menor que o de subnets volte um erro
@@ -7,13 +8,13 @@ resource "aws_instance" "ec2_instance" {
   vpc_security_group_ids      = [aws_security_group.sg_default.id]
   key_name                    = aws_key_pair.key_pair.id
 
-  tags = merge(var.tags, {
+  tags = {
     Name                      = "${var.project}-${count.index +1}"
-  },)
+  }
 }
 
 resource "aws_key_pair" "key_pair" {
-    key_name   = var.project
+    key_name   = "${var.project}-module"
     public_key = file(var.public_key)
 }
 
@@ -55,7 +56,7 @@ resource "aws_security_group" "sg_default" {
       }      
   }
   
-  tags = merge(var.tags, {
+  tags = {
     Name        = var.project
-  },)
+  }
 }

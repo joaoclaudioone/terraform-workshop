@@ -1,5 +1,10 @@
 data "aws_vpc" "available" {
   state = "available"
+  
+  filter {
+      name   = "tag:Name"
+      values  = ["VPC Base"]
+    }
 }
 
 data "aws_subnet_ids" "subnet_id" {
