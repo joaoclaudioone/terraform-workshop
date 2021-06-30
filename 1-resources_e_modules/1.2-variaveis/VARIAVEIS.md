@@ -1,12 +1,12 @@
 # Variáveis
-Servem para parametrizar o nosso código, deixando mais facilmente parametrizável. Os valores das variáveis podem ser assinalados via bloco de comando, linha de comando, módulo e arquivo de configuração.
+Servem para parametrizar o nosso código, deixando mais reaproveitável. Os valores das variáveis podem ser assinalados via bloco de comando, linha de comando, módulo e arquivo de configuração.
  
-Existem dois tipos de variáveis de input e output.
+Existem dois tipos de variáveis as de input e output.
  
 ### Input
 Servem como parâmetros para um módulo do terraform, permitindo que ele seja customizado sem alterar o código fonte do módulo.
  
-O terraform suporta três tipos de variáveis string, number e bool. E estruturas como list, set, map object e tuple.
+O terraform suporta três tipos de variáveis string, number e bool. E estruturas como list, set, map, object e tuple.
  
 ```
 variable "ami_id" {
@@ -28,9 +28,10 @@ O terraform carrega as variáveis na seguinte ordem, onde os últimos valores so
  
 São valores de retorno do apply do terraform. Estes valores tem diversos usos. 
 
-- Um módulo que foi executado pode expor esses valores para o módulo que fez a chamada. 
-- Pode servir de retorno depois de um terraform apply
-- Quando usamos um remote state, essas informações ficam expostas para outros módulos. 
+- Referenciar recursos criados em um módulo filho,
+- Relatório dos recursos que foram criados após um `terraform apply`,
+- Retorno do comando `terraform output`,
+- Reaproveitado quando consultamos um estado remoto. Exemplo: Temos um módulo terraform que cria a VPC e outro módulo que consulta o estado remoto e utiliza essas informações, com o recurso data. 
 
 ```
 output "private_ip" {
